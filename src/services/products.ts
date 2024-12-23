@@ -1,5 +1,6 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { Product } from "@/data/products";
+import type { Database } from "@/integrations/supabase/types";
 
 export const getProducts = async (): Promise<Product[]> => {
   const { data, error } = await supabase
