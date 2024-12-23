@@ -28,14 +28,15 @@ export const deleteProduct = async (id: number): Promise<void> => {
 };
 
 export const addProduct = async (product: Omit<Product, "id">): Promise<Product> => {
-  // First upload the image to storage if it's a base64 string
   let imageUrl = product.image;
+  
+  // If the image is a base64 string, upload it to storage
   if (product.image.startsWith('data:')) {
     const file = await fetch(product.image).then(res => res.blob());
     const fileExt = file.type.split('/')[1];
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
-    const { data: uploadData, error: uploadError } = await supabase.storage
+    const { error: uploadError } = await supabase.storage
       .from('products')
       .upload(fileName, file);
 
@@ -70,14 +71,15 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
 };
 
 export const updateProduct = async (product: Product): Promise<Product> => {
-  // Handle image upload if it's a new base64 image
   let imageUrl = product.image;
+  
+  // If the image is a base64 string, upload it to storage
   if (product.image.startsWith('data:')) {
     const file = await fetch(product.image).then(res => res.blob());
     const fileExt = file.type.split('/')[1];
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
-    const { data: uploadData, error: uploadError } = await supabase.storage
+    const { error: uploadError } = await supabase.storage
       .from('products')
       .upload(fileName, file);
 
