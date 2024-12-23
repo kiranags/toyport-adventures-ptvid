@@ -8,7 +8,13 @@ export const getProducts = async (): Promise<Product[]> => {
     .order('created_at', { ascending: false });
 
   if (error) throw error;
-  return data || [];
+  
+  return (data || []).map(product => ({
+    id: product.id,
+    name: product.name,
+    description: product.description || "",
+    image: product.image_url || "",
+  }));
 };
 
 export const deleteProduct = async (id: number): Promise<void> => {
@@ -52,11 +58,13 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
     .single();
 
   if (error) throw error;
+  if (!data) throw new Error('No data returned from insert');
+
   return {
     id: data.id,
     name: data.name,
-    description: data.description,
-    image: data.image_url
+    description: data.description || "",
+    image: data.image_url || "",
   };
 };
 
@@ -93,10 +101,12 @@ export const updateProduct = async (product: Product): Promise<Product> => {
     .single();
 
   if (error) throw error;
+  if (!data) throw new Error('No data returned from update');
+
   return {
     id: data.id,
     name: data.name,
-    description: data.description,
-    image: data.image_url
+    description: data.description || "",
+    image: data.image_url || "",
   };
 };
