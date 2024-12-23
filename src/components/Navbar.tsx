@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [session, setSession] = useState<any>(null);
   const location = useLocation();
+  const { toast } = useToast();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -21,6 +23,14 @@ const Navbar = () => {
 
     return () => subscription.unsubscribe();
   }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    toast({
+      title: "Logged out successfully",
+      description: "You have been logged out of your account",
+    });
+  };
 
   const navigation = [
     { name: "Beranda", href: "/" },
@@ -65,6 +75,15 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            {session && (
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Logout</span>
+              </button>
+            )}
           </div>
 
           {/* Mobile Navigation Button */}
@@ -102,6 +121,15 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            {session && (
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 text-gray-600 hover:text-primary w-full px-3 py-2 text-base font-medium"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Logout</span>
+              </button>
+            )}
           </div>
         </div>
       )}
