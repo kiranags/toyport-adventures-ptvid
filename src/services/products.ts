@@ -37,9 +37,15 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
 
     const fileExt = file.type?.split('/')?.[1] || 'png';
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
+
+    // First, check if user is authenticated
+    const session = await supabase.auth.getSession();
+    if (!session.data.session) {
+      throw new Error('User must be authenticated to upload files');
+    }
     
     // Upload the file
-    const { error: uploadError, data } = await supabase.storage
+    const { error: uploadError, data: uploadData } = await supabase.storage
       .from('products')
       .upload(fileName, file, {
         cacheControl: '3600',
@@ -48,7 +54,7 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
 
     if (uploadError) throw uploadError;
 
-    // Get the public URL
+    // Get the public URL only if upload was successful
     const { data: { publicUrl } } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
@@ -87,9 +93,15 @@ export const updateProduct = async (product: Product): Promise<Product> => {
 
     const fileExt = file.type?.split('/')?.[1] || 'png';
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
+
+    // First, check if user is authenticated
+    const session = await supabase.auth.getSession();
+    if (!session.data.session) {
+      throw new Error('User must be authenticated to upload files');
+    }
     
     // Upload the file
-    const { error: uploadError } = await supabase.storage
+    const { error: uploadError, data: uploadData } = await supabase.storage
       .from('products')
       .upload(fileName, file, {
         cacheControl: '3600',
@@ -98,7 +110,7 @@ export const updateProduct = async (product: Product): Promise<Product> => {
 
     if (uploadError) throw uploadError;
 
-    // Get the public URL
+    // Get the public URL only if upload was successful
     const { data: { publicUrl } } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
