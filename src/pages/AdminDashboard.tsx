@@ -169,7 +169,7 @@ const AdminDashboard = () => {
                 />
                 <CardContent className="p-4">
                   <h3 className="font-bold mb-2">{product.name}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{product.description}</p>
+                  <p className="text-sm text-gray-600 mb-4 whitespace-pre-line">{product.description}</p>
                   <div className="flex gap-2">
                     <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
                       <DialogTrigger asChild>
