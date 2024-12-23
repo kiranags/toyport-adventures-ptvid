@@ -35,7 +35,7 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
     const file = await fetch(product.image).then(res => res.blob());
     if (!file) throw new Error('Failed to process image file');
 
-    const fileExt = file.type?.split('/')?.[1] || 'png'; // Fallback to png if type is not available
+    const fileExt = file.type?.split('/')?.[1] || 'png';
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
     // Upload the file
@@ -46,11 +46,11 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
     if (uploadError) throw uploadError;
 
     // Get the public URL after successful upload
-    const { data: { publicUrl } } = supabase.storage
+    const { data } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
 
-    imageUrl = publicUrl;
+    imageUrl = data.publicUrl;
   }
 
   const { data, error } = await supabase
@@ -82,7 +82,7 @@ export const updateProduct = async (product: Product): Promise<Product> => {
     const file = await fetch(product.image).then(res => res.blob());
     if (!file) throw new Error('Failed to process image file');
 
-    const fileExt = file.type?.split('/')?.[1] || 'png'; // Fallback to png if type is not available
+    const fileExt = file.type?.split('/')?.[1] || 'png';
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
     // Upload the file
@@ -93,11 +93,11 @@ export const updateProduct = async (product: Product): Promise<Product> => {
     if (uploadError) throw uploadError;
 
     // Get the public URL after successful upload
-    const { data: { publicUrl } } = supabase.storage
+    const { data } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
 
-    imageUrl = publicUrl;
+    imageUrl = data.publicUrl;
   }
 
   const { data, error } = await supabase
