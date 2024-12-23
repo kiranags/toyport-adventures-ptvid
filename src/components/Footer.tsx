@@ -1,7 +1,10 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const phoneNumber = "087722677273";
+  const whatsappUrl = `https://wa.me/${phoneNumber}`;
+
   return (
     <footer className="bg-primary text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -48,6 +51,20 @@ const Footer = () => {
               <li className="flex items-center space-x-2">
                 <Mail className="h-5 w-5" />
                 <span>contact@perwiraduta.com</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <MessageCircle className="h-5 w-5" />
+                <a 
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary transition-colors flex items-center gap-2"
+                >
+                  <span>WhatsApp: 087722677273</span>
+                  <span className="text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
+                    Online
+                  </span>
+                </a>
               </li>
               <li className="flex items-start space-x-2">
                 <MapPin className="h-5 w-5 mt-1 flex-shrink-0" />
