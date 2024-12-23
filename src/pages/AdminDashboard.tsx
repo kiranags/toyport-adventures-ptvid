@@ -5,30 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash } from "lucide-react";
-
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-}
+import { initialProducts, type Product } from "@/data/products";
 
 const AdminDashboard = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      name: "Mainan Edukasi",
-      description: "Mainan yang membantu perkembangan anak",
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
-    },
-    {
-      id: 2,
-      name: "Action Figures",
-      description: "Koleksi action figure populer",
-      image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
-    },
-  ]);
+  const [products, setProducts] = useState<Product[]>(initialProducts);
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
