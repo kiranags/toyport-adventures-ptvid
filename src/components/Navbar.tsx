@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const navigation = [
     { name: "Beranda", href: "/" },
+    { name: "Produk", href: "/products" },
     { name: "Tentang", href: "/about" },
     { name: "Kontak", href: "/contact" },
   ];
