@@ -8,20 +8,20 @@ export interface Product {
 export const initialProducts: Product[] = [
   {
     id: 1,
-    name: "Mainan Edukasi",
-    description: "Mainan yang membantu perkembangan anak",
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
+    name: "Thomas Robot",
+    description: "- Qty/ctn = 120 pcs\n- Kode = SMA403\n- Baterai AA\n- Ukuran Produk = 20cm x 10cm x 10cm",
+    image: "/lovable-uploads/e6f63658-1278-4afc-811d-85de00634b59.png",
   },
   {
     id: 2,
-    name: "Action Figures",
-    description: "Koleksi action figure populer",
-    image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
+    name: "Avengers Cars (5 pcs)",
+    description: "- Qty/ctn = 336 pcs\n- Kode = SMA409\n- Non Baterai",
+    image: "/lovable-uploads/e6f63658-1278-4afc-811d-85de00634b59.png",
   },
   {
     id: 3,
-    name: "Board Games",
-    description: "Permainan papan untuk keluarga",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    name: "Rubik 3x3x3 List Putih",
+    description: "- Qty/ctn = 540 pcs\n- Kode = SMA830\n- Non Baterai",
+    image: "/lovable-uploads/e6f63658-1278-4afc-811d-85de00634b59.png",
   }
 ];
