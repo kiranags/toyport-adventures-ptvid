@@ -13,12 +13,12 @@ const Footer = () => {
               className="h-16 w-auto bg-white p-2 rounded"
             />
             <p className="text-sm">
-              Your Reliable Toy Forwarder to Indonesia
+              Forwarder Mainan Terpercaya ke Indonesia
             </p>
           </div>
           
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold">Menu Cepat</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="hover:text-secondary transition-colors">
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
           
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Info</h3>
+            <h3 className="text-lg font-semibold">Informasi Kontak</h3>
             <ul className="space-y-2">
               <li className="flex items-center space-x-2">
                 <Phone className="h-5 w-5" />
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-white/10 text-center text-sm">
-          <p>© {new Date().getFullYear()} PT Perwira Duta Indonesia. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} PT Perwira Duta Indonesia. Hak Cipta Dilindungi.</p>
         </div>
       </div>
     </footer>

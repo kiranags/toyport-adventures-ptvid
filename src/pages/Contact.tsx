@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Telepon, Mail, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -15,8 +15,8 @@ const Contact = () => {
     // Here you would typically send the form data to your backend
     console.log("Form submitted:", formData);
     toast({
-      title: "Message Sent",
-      description: "We'll get back to you as soon as possible.",
+      title: "Pesan Sent",
+      description: "Kami akan segera menghubungi Anda.",
     });
     setFormData({ name: "", email: "", message: "" });
   };
@@ -29,53 +29,53 @@ const Contact = () => {
   };
 
   return (
-    <div className="animate-fade-in">
+    <div classNama="animate-fade-in">
       {/* Hero Section */}
-      <section className="relative py-20 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-heading font-bold mb-6">Contact Us</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Get in touch with us for any inquiries about our forwarding and
-            importing services
+      <section classNama="relative py-20 bg-primary text-white">
+        <div classNama="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 classNama="text-4xl font-heading font-bold mb-6">Hubungi Kami</h1>
+          <p classNama="text-xl max-w-3xl mx-auto">
+            Hubungi kami untuk informasi lebih lanjut tentang layanan forwarding
+            dan impor kami
           </p>
         </div>
       </section>
 
       {/* Contact Form and Info */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section classNama="py-16 px-4 sm:px-6 lg:px-8">
+        <div classNama="max-w-7xl mx-auto">
+          <div classNama="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <div className="space-y-8">
-              <h2 className="text-3xl font-heading font-bold mb-8">
-                Get in Touch
+            <div classNama="space-y-8">
+              <h2 classNama="text-3xl font-heading font-bold mb-8">
+                Hubungi Kami
               </h2>
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Phone className="h-6 w-6 text-primary" />
+              <div classNama="space-y-6">
+                <div classNama="flex items-center space-x-4">
+                  <div classNama="bg-primary/10 p-3 rounded-full">
+                    <Telepon classNama="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Phone</h3>
-                    <p className="text-gray-600">02187796565</p>
+                    <h3 classNama="font-semibold">Telepon</h3>
+                    <p classNama="text-gray-600">02187796565</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Mail className="h-6 w-6 text-primary" />
+                <div classNama="flex items-center space-x-4">
+                  <div classNama="bg-primary/10 p-3 rounded-full">
+                    <Mail classNama="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-600">contact@perwiraduta.com</p>
+                    <h3 classNama="font-semibold">Email</h3>
+                    <p classNama="text-gray-600">contact@perwiraduta.com</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <MapPin className="h-6 w-6 text-primary" />
+                <div classNama="flex items-start space-x-4">
+                  <div classNama="bg-primary/10 p-3 rounded-full">
+                    <MapPin classNama="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Address</h3>
-                    <p className="text-gray-600">
+                    <h3 classNama="font-semibold">Alamat</h3>
+                    <p classNama="text-gray-600">
                       Komp. Nuansa Commercial Estate,
                       <br />
                       Jl. TB Simatupang No.17 blok A3,
@@ -90,14 +90,14 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div classNama="bg-white p-8 rounded-lg shadow-lg">
+              <form onSubmit={handleSubmit} classNama="space-y-6">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700"
+                    classNama="block text-sm font-medium text-gray-700"
                   >
-                    Name
+                    Nama
                   </label>
                   <input
                     type="text"
@@ -106,13 +106,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
+                    classNama="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
+                    classNama="block text-sm font-medium text-gray-700"
                   >
                     Email
                   </label>
@@ -123,15 +123,15 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
+                    classNama="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-700"
+                    classNama="block text-sm font-medium text-gray-700"
                   >
-                    Message
+                    Pesan
                   </label>
                   <textarea
                     id="message"
@@ -140,14 +140,14 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
+                    classNama="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-primary/90 transition-colors duration-300"
+                  classNama="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-primary/90 transition-colors duration-300"
                 >
-                  Send Message
+                  Send Pesan
                 </button>
               </form>
             </div>

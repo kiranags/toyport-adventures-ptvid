@@ -6,10 +6,10 @@ const About = () => {
       {/* Hero Section */}
       <section className="relative py-20 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-heading font-bold mb-6">About Us</h1>
+          <h1 className="text-4xl font-heading font-bold mb-6">Tentang Kami</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            PT Perwira Duta Indonesia is your trusted partner in toy importation
-            and forwarding services to Indonesia
+            PT Perwira Duta Indonesia adalah mitra terpercaya Anda dalam jasa
+            impor dan forwarding mainan ke Indonesia
           </p>
         </div>
       </section>
@@ -20,21 +20,21 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-heading font-bold mb-6">
-                Our Story
+                Cerita Kami
               </h2>
               <p className="text-gray-600 mb-4">
-                Founded with a vision to simplify the importing process, PT Perwira
-                Duta Indonesia has grown to become a leading forwarding company
-                specializing in toy importation.
+                Didirikan dengan visi untuk menyederhanakan proses impor, PT Perwira
+                Duta Indonesia telah berkembang menjadi perusahaan forwarding terkemuka
+                yang mengkhususkan diri dalam impor mainan.
               </p>
               <p className="text-gray-600 mb-4">
-                We understand the unique requirements of toy importing, from safety
-                certifications to proper handling, and we ensure every shipment
-                meets the highest standards of quality and compliance.
+                Kami memahami kebutuhan khusus impor mainan, mulai dari sertifikasi
+                keamanan hingga penanganan yang tepat, dan kami memastikan setiap
+                pengiriman memenuhi standar kualitas dan kepatuhan tertinggi.
               </p>
               <p className="text-gray-600">
-                Our team of experts is dedicated to providing personalized service
-                and support throughout the entire importing process.
+                Tim ahli kami berdedikasi untuk memberikan layanan dan dukungan
+                personal selama seluruh proses impor.
               </p>
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-lg">
@@ -59,7 +59,7 @@ const About = () => {
             <div className="flex items-start space-x-4">
               <MapPin className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-semibold mb-2">Our Location</h3>
+                <h3 className="text-xl font-semibold mb-2">Lokasi Kami</h3>
                 <p className="text-gray-600">
                   Komp. Nuansa Commercial Estate,
                   <br />

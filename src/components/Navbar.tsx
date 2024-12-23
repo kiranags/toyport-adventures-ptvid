@@ -7,9 +7,9 @@ const Navbar = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Beranda", href: "/" },
+    { name: "Tentang", href: "/about" },
+    { name: "Kontak", href: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
