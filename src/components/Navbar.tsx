@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [session, setSession] = useState<any>(null);
   const location = useLocation();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const navigation = [
     { name: "Beranda", href: "/" },
     { name: "Produk", href: "/products" },
     { name: "Tentang", href: "/about" },
     { name: "Kontak", href: "/contact" },
+    ...(session ? [{ name: "Dashboard", href: "/admin/dashboard" }] : []),
   ];
 
   const isActive = (path: string) => location.pathname === path;
