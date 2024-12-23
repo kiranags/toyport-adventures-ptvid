@@ -24,7 +24,7 @@ const Products = () => {
             </div>
             <CardHeader className="flex-grow">
               <CardTitle className="text-xl mb-2">{product.name}</CardTitle>
-              <CardDescription className="text-base leading-relaxed">
+              <CardDescription className="text-base leading-relaxed whitespace-pre-line">
                 {product.description}
               </CardDescription>
             </CardHeader>
