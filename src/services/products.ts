@@ -33,6 +33,40 @@ const getInitialProducts = (): Product[] => {
 
 let products: Product[] = getInitialProducts();
 
+const optimizeImage = async (base64Image: string): Promise<string> => {
+  // If it's already a URL (starts with /), return as is
+  if (base64Image.startsWith('/')) {
+    return base64Image;
+  }
+
+  // If it's a new base64 image, we'll store it with a max width
+  const img = new Image();
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  return new Promise((resolve) => {
+    img.onload = () => {
+      const maxWidth = 800;
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth) {
+        height = (maxWidth * height) / width;
+        width = maxWidth;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      ctx?.drawImage(img, 0, 0, width, height);
+      
+      // Convert to WebP format for better compression
+      const optimizedImage = canvas.toDataURL('image/webp', 0.8);
+      resolve(optimizedImage);
+    };
+    img.src = base64Image;
+  });
+};
+
 export const getProducts = async (): Promise<Product[]> => {
   const storedProducts = localStorage.getItem('products');
   if (storedProducts) {
@@ -47,17 +81,20 @@ export const deleteProduct = async (id: number): Promise<void> => {
 };
 
 export const addProduct = async (product: Omit<Product, "id">): Promise<Product> => {
+  const optimizedImage = await optimizeImage(product.image);
   const newId = Math.max(...products.map(p => p.id), 0) + 1;
-  const newProduct = { ...product, id: newId };
+  const newProduct = { ...product, id: newId, image: optimizedImage };
   products = [...products, newProduct];
   localStorage.setItem('products', JSON.stringify(products));
   return newProduct;
 };
 
 export const updateProduct = async (updatedProduct: Product): Promise<Product> => {
+  const optimizedImage = await optimizeImage(updatedProduct.image);
+  const productWithOptimizedImage = { ...updatedProduct, image: optimizedImage };
   products = products.map(product => 
-    product.id === updatedProduct.id ? updatedProduct : product
+    product.id === updatedProduct.id ? productWithOptimizedImage : product
   );
   localStorage.setItem('products', JSON.stringify(products));
-  return updatedProduct;
+  return productWithOptimizedImage;
 };
