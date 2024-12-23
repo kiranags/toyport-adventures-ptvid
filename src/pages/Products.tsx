@@ -57,9 +57,6 @@ const Products = () => {
                       <CardTitle>{product.name}</CardTitle>
                       <CardDescription>{product.description}</CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">Kategori: {product.category}</p>
-                    </CardContent>
                   </Card>
                 ))}
             </div>
