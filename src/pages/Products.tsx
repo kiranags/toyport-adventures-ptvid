@@ -12,22 +12,22 @@ const Products = () => {
     <div className="container mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-8 text-center">Contoh Produk Impor</h1>
       
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
-          <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col md:flex-row">
-            <div className="md:w-1/3">
+          <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full">
+            <div className="aspect-square">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-contain aspect-square"
+                className="w-full h-full object-contain"
               />
             </div>
-            <div className="md:w-2/3">
-              <CardHeader>
-                <CardTitle className="text-2xl mb-2">{product.name}</CardTitle>
-                <CardDescription className="text-lg">{product.description}</CardDescription>
-              </CardHeader>
-            </div>
+            <CardHeader className="flex-grow">
+              <CardTitle className="text-xl mb-2">{product.name}</CardTitle>
+              <CardDescription className="text-base leading-relaxed">
+                {product.description}
+              </CardDescription>
+            </CardHeader>
           </Card>
         ))}
       </div>
