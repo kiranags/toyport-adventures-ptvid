@@ -49,7 +49,7 @@ const Home = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary text-white">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-heading font-bold mb-6">
-            Ready to Mulai Sekarang?
+            Butuh Impor Sekarang?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Hubungi kami sekarang untuk konsultasi tentang kebutuhan impor Anda
