@@ -2,8 +2,8 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const phoneNumber = "+62877-2267-7273";
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\s+/g, '')}`;
+  const phoneNumber = "+6287722677273";
+  const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   return (
     <footer className="bg-primary text-white">
