@@ -2,8 +2,8 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const phoneNumber = "087722677273";
-  const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  const phoneNumber = "+62877-2267-7273";
+  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\s+/g, '')}`;
 
   return (
     <footer className="bg-primary text-white">
@@ -46,7 +46,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center space-x-2">
                 <Phone className="h-5 w-5" />
-                <span>02187796565</span>
+                <span>021-8779-6565</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-5 w-5" />
@@ -60,7 +60,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="hover:text-secondary transition-colors flex items-center gap-2"
                 >
-                  <span>WhatsApp: 087722677273</span>
+                  <span>WhatsApp: +62 877-2267-7273</span>
                   <span className="text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
                     Online
                   </span>

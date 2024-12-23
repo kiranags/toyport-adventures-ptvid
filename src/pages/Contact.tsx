@@ -2,8 +2,8 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {
-  const phoneNumber = "087722677273";
-  const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  const phoneNumber = "+62877-2267-7273";
+  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\s+/g, '')}`;
 
   return (
     <div className="animate-fade-in">
@@ -34,7 +34,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Telepon</h3>
-                    <p className="text-gray-600">02187796565</p>
+                    <p className="text-gray-600">021-8779-6565</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
