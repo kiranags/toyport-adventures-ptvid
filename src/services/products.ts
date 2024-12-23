@@ -59,3 +59,12 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
   localStorage.setItem('products', JSON.stringify(products));
   return newProduct;
 };
+
+export const updateProduct = async (updatedProduct: Product): Promise<Product> => {
+  products = products.map(product => 
+    product.id === updatedProduct.id ? updatedProduct : product
+  );
+  // Persist to localStorage
+  localStorage.setItem('products', JSON.stringify(products));
+  return updatedProduct;
+};
