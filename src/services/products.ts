@@ -39,18 +39,21 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
     // Upload the file
-    const { error: uploadError } = await supabase.storage
+    const { error: uploadError, data } = await supabase.storage
       .from('products')
-      .upload(fileName, file);
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
 
     if (uploadError) throw uploadError;
 
-    // Get the public URL after successful upload
-    const { data } = supabase.storage
+    // Get the public URL
+    const { data: { publicUrl } } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
 
-    imageUrl = data.publicUrl;
+    imageUrl = publicUrl;
   }
 
   const { data, error } = await supabase
@@ -88,16 +91,19 @@ export const updateProduct = async (product: Product): Promise<Product> => {
     // Upload the file
     const { error: uploadError } = await supabase.storage
       .from('products')
-      .upload(fileName, file);
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
 
     if (uploadError) throw uploadError;
 
-    // Get the public URL after successful upload
-    const { data } = supabase.storage
+    // Get the public URL
+    const { data: { publicUrl } } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
 
-    imageUrl = data.publicUrl;
+    imageUrl = publicUrl;
   }
 
   const { data, error } = await supabase
