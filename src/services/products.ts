@@ -36,12 +36,14 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
     const fileExt = file.type.split('/')[1];
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
+    // Upload the file
     const { error: uploadError } = await supabase.storage
       .from('products')
       .upload(fileName, file);
 
     if (uploadError) throw uploadError;
 
+    // Get the public URL after successful upload
     const { data: { publicUrl } } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
@@ -79,12 +81,14 @@ export const updateProduct = async (product: Product): Promise<Product> => {
     const fileExt = file.type.split('/')[1];
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
+    // Upload the file
     const { error: uploadError } = await supabase.storage
       .from('products')
       .upload(fileName, file);
 
     if (uploadError) throw uploadError;
 
+    // Get the public URL after successful upload
     const { data: { publicUrl } } = supabase.storage
       .from('products')
       .getPublicUrl(fileName);
