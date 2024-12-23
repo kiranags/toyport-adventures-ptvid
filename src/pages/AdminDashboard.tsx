@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import { Trash } from "lucide-react";
 
 interface Product {
   id: number;
@@ -145,7 +146,9 @@ const AdminDashboard = () => {
                   <Button
                     variant="destructive"
                     onClick={() => handleDeleteProduct(product.id)}
+                    className="w-full"
                   >
+                    <Trash className="mr-2 h-4 w-4" />
                     Hapus Produk
                   </Button>
                 </CardContent>
