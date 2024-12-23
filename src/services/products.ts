@@ -31,9 +31,11 @@ export const addProduct = async (product: Omit<Product, "id">): Promise<Product>
   let imageUrl = product.image;
   
   // If the image is a base64 string, upload it to storage
-  if (product.image.startsWith('data:')) {
+  if (product.image?.startsWith('data:')) {
     const file = await fetch(product.image).then(res => res.blob());
-    const fileExt = file.type.split('/')[1];
+    if (!file) throw new Error('Failed to process image file');
+
+    const fileExt = file.type?.split('/')?.[1] || 'png'; // Fallback to png if type is not available
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
     // Upload the file
@@ -76,9 +78,11 @@ export const updateProduct = async (product: Product): Promise<Product> => {
   let imageUrl = product.image;
   
   // If the image is a base64 string, upload it to storage
-  if (product.image.startsWith('data:')) {
+  if (product.image?.startsWith('data:')) {
     const file = await fetch(product.image).then(res => res.blob());
-    const fileExt = file.type.split('/')[1];
+    if (!file) throw new Error('Failed to process image file');
+
+    const fileExt = file.type?.split('/')?.[1] || 'png'; // Fallback to png if type is not available
     const fileName = `${crypto.randomUUID()}.${fileExt}`;
     
     // Upload the file
