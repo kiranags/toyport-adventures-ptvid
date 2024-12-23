@@ -1,13 +1,19 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { initialProducts } from "@/data/products";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "@/services/products";
 
 const Products = () => {
+  const { data: products = [] } = useQuery({
+    queryKey: ['products'],
+    queryFn: getProducts
+  });
+
   return (
     <div className="container mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-8">Contoh Produk Impor</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {initialProducts.map((product) => (
+        {products.map((product) => (
           <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
             <img
               src={product.image}

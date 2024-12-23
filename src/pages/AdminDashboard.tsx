@@ -5,16 +5,23 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash } from "lucide-react";
-import { initialProducts, type Product } from "@/data/products";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getProducts, deleteProduct, addProduct } from "@/services/products";
+import type { Product } from "@/data/products";
 
 const AdminDashboard = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [products, setProducts] = useState<Product[]>(initialProducts);
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
   });
   const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const { data: products = [] } = useQuery({
+    queryKey: ['products'],
+    queryFn: getProducts
+  });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -30,18 +37,18 @@ const AdminDashboard = () => {
     }));
   };
 
-  const handleAddProduct = () => {
+  const handleAddProduct = async () => {
     if (selectedFile && newProduct.name && newProduct.description) {
-      const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
       const imageUrl = URL.createObjectURL(selectedFile);
       
-      setProducts(prev => [...prev, {
-        id: newId,
+      await addProduct({
         name: newProduct.name,
         description: newProduct.description,
         image: imageUrl,
-      }]);
+      });
 
+      await queryClient.invalidateQueries({ queryKey: ['products'] });
+      
       setSelectedFile(null);
       setNewProduct({ name: "", description: "" });
       
@@ -58,8 +65,10 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleDeleteProduct = (id: number) => {
-    setProducts(prev => prev.filter(product => product.id !== id));
+  const handleDeleteProduct = async (id: number) => {
+    await deleteProduct(id);
+    await queryClient.invalidateQueries({ queryKey: ['products'] });
+    
     toast({
       title: "Produk berhasil dihapus",
       description: "Produk telah dihapus dari daftar",
@@ -102,7 +111,10 @@ const AdminDashboard = () => {
               className="mb-4"
             />
           </div>
-          <Button onClick={handleAddProduct} disabled={!selectedFile || !newProduct.name || !newProduct.description}>
+          <Button 
+            onClick={handleAddProduct} 
+            disabled={!selectedFile || !newProduct.name || !newProduct.description}
+          >
             Tambah Produk
           </Button>
         </CardContent>
