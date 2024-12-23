@@ -19,12 +19,16 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center gap-3">
               <img
-                src="/lovable-uploads/6b51d257-df41-4be4-8099-3fd7ca451b22.png"
+                src="/lovable-uploads/17147972-7ed7-4ffd-802d-0fc4d95b8234.png"
                 alt="PT Perwira Duta Indonesia"
                 className="h-12 w-auto"
               />
+              <div className="flex flex-col items-start">
+                <span className="font-bold text-lg text-primary">PT Perwira Duta Indonesia</span>
+                <span className="text-sm text-gray-600">Forwarder Mainan Terpercaya</span>
+              </div>
             </Link>
           </div>
           
